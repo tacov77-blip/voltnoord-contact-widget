@@ -1,75 +1,116 @@
-(function () {
+<!DOCTYPE html>
+<html lang="nl">
 
-    "use strict";
+<head>
 
-    // Niet twee keer installeren
-    if (document.getElementById("volt-widget")) return;
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    // CSS laden
-    const css = document.createElement("link");
-    css.rel = "stylesheet";
-    css.href = "https://tacov77-blip.github.io/voltnoord-contact-widget/widget.css";
-    document.head.appendChild(css);
+<title>Volt Noord Widget V2</title>
 
-    // HTML toevoegen
-    document.body.insertAdjacentHTML("beforeend", `
+<link rel="stylesheet" href="widget.css">
+
+</head>
+
+<body>
+
+<div class="demo">
+
+    <div class="hero">
+
+        <h1>Volt Noord</h1>
+
+        <p>Lokale ontwikkelomgeving voor de contactwidget.</p>
+
+    </div>
+
+</div>
+
+<!-- ===================================================== -->
+<!-- VOLT NOORD WIDGET                                     -->
+<!-- ===================================================== -->
+
 <div id="volt-widget">
 
+    <!-- Launcher -->
+
     <button id="volt-launcher" aria-label="Open widget">
+
+        <!-- Tijdelijke launcher -->
+        <!-- Wordt in fase 4 vervangen door SVG -->
+
         ⚡
+
     </button>
+
+    <!-- Widget -->
 
     <div class="volt-card">
 
         <button class="volt-close" aria-label="Sluiten">
+
             ✕
+
         </button>
 
         <div class="volt-header">
 
-            <div class="volt-brand">
+    <div class="volt-brand">
 
-                <img
-                    src="https://tacov77-blip.github.io/voltnoord-contact-widget/assets/header-icon.png"
-                    class="brand-icon"
-                    alt="Volt Noord">
+        <img
+            src="assets/header-icon.png"
+            class="brand-icon"
+            alt="Volt Noord">
 
-                <div class="brand-text">
+        <div class="brand-text">
 
-                    <h3>Volt Noord</h3>
+            <h3>Volt Noord</h3>
 
-                    <span>Elektrotechniek</span>
-
-                </div>
-
-            </div>
-
-            <h2>Heeft u een storing?</h2>
-
-            <p>
-                Wij helpen u direct verder.
-                Bel ons of stuur een WhatsApp.
-            </p>
-
-            <div class="volt-status">
-                <span class="status-dot"></span>
-                Bereikbaar 17:00-22:00
-            </div>
+            <span>Elektrotechniek</span>
 
         </div>
 
+    </div>
+
+    <h2>Heeft u een storing?</h2>
+
+    <p>
+
+        Wij helpen u direct verder.
+
+        Bel ons of stuur een WhatsApp.
+
+    </p>
+
+    <div class="volt-status">
+
+        <span class="status-dot"></span>
+
+        Bereikbaar 17:00-22:00
+
+    </div>
+
+</div>
+
         <div class="volt-actions">
 
-            <a href="tel:0644513156" class="btn btn-primary">
+            <a
+                href="tel:0644513156"
+                class="btn btn-primary">
+
                 📞
+
                 <span>Bel direct</span>
+
             </a>
 
-            <a href="https://wa.me/31644513156"
-               target="_blank"
-               class="btn btn-secondary">
+            <a
+                href="https://wa.me/31644513156"
+                target="_blank"
+                class="btn btn-secondary">
 
                 💬
+
                 <span>WhatsApp</span>
 
             </a>
@@ -77,17 +118,17 @@
         </div>
 
         <div class="volt-footer">
+
             Gemiddelde reactietijd ±15 minuten
+
         </div>
 
     </div>
 
 </div>
-`);
 
-    // Daarna jouw bestaande logica laden
-    const script = document.createElement("script");
-    script.src = "https://tacov77-blip.github.io/voltnoord-contact-widget/widget-core.js";
-    document.body.appendChild(script);
+<script src="widget-core.js"></script>
 
-})();
+</body>
+
+</html>
