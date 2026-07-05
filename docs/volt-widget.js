@@ -20,12 +20,26 @@
 
             const widget = doc.getElementById("volt-widget");
 
-            if (!widget) {
-                console.error("Volt Widget niet gevonden.");
-                return;
-            }
+if (!widget) {
+    console.error("Volt Widget niet gevonden.");
+    return;
+}
 
-            document.body.appendChild(widget);
+// Afbeeldingen omzetten naar absolute GitHub URL's
+widget.querySelectorAll("img").forEach(img => {
+
+    const src = img.getAttribute("src");
+
+    if (src && !src.startsWith("http")) {
+
+        img.src =
+            "https://tacov77-blip.github.io/voltnoord-contact-widget/" + src;
+
+    }
+
+});
+
+document.body.appendChild(widget);
 
             // Logica laden
             const script = document.createElement("script");
