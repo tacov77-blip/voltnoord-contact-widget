@@ -1,3 +1,5 @@
+window.initVoltWidget = function () {
+
 const widget = document.getElementById("volt-widget");
 const launcher = document.getElementById("volt-launcher");
 const card = document.querySelector(".volt-card");
@@ -135,3 +137,4 @@ document.addEventListener("click",(e)=>{
     closeWidget(false);
 
 });
+};

@@ -2,7 +2,7 @@
 
     "use strict";
 
-    // Voorkom dubbele installatie
+    // Niet twee keer installeren
     if (document.getElementById("volt-widget")) return;
 
     // CSS laden
@@ -16,8 +16,11 @@
     document.head.appendChild(css);
 
     // HTML injecteren
-    document.body.insertAdjacentHTML("beforeend", `
 
+    document.body.insertAdjacentHTML(
+        "beforeend",
+
+`
 <div id="volt-widget">
 
     <button id="volt-launcher" aria-label="Open widget">
@@ -80,6 +83,7 @@
                 class="btn btn-primary">
 
                 📞
+
                 <span>Bel direct</span>
 
             </a>
@@ -90,6 +94,7 @@
                 class="btn btn-secondary">
 
                 💬
+
                 <span>WhatsApp</span>
 
             </a>
@@ -106,15 +111,7 @@
 
 </div>
 
-`);
-
-    // Daarna jouw bestaande widget laden
-
-    const script = document.createElement("script");
-
-    script.src =
-        "https://tacov77-blip.github.io/voltnoord-contact-widget/widget.js";
-
-    document.body.appendChild(script);
+`
+    );
 
 })();
