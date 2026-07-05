@@ -1,117 +1,44 @@
 (function () {
-
     "use strict";
 
-    // Niet twee keer installeren
+    // Niet twee keer laden
     if (document.getElementById("volt-widget")) return;
 
     // CSS laden
     const css = document.createElement("link");
-
     css.rel = "stylesheet";
-
-    css.href =
-        "https://tacov77-blip.github.io/voltnoord-contact-widget/widget.css";
-
+    css.href = "https://tacov77-blip.github.io/voltnoord-contact-widget/widget.css";
     document.head.appendChild(css);
 
-    // HTML injecteren
+    // HTML ophalen
+    fetch("https://tacov77-blip.github.io/voltnoord-contact-widget/index.html")
+        .then(response => response.text())
+        .then(html => {
 
-    document.body.insertAdjacentHTML(
-        "beforeend",
+            const parser = new DOMParser();
+            const doc = parser.parseFromString(html, "text/html");
 
-`
-<div id="volt-widget">
+            const widget = doc.getElementById("volt-widget");
 
-    <button id="volt-launcher" aria-label="Open widget">
+            if (!widget) {
+                console.error("Volt Widget niet gevonden.");
+                return;
+            }
 
-        ⚡
+            document.body.appendChild(widget);
 
-    </button>
+            // Logica laden
+            const script = document.createElement("script");
+            script.src = "https://tacov77-blip.github.io/voltnoord-contact-widget/widget-core.js";
 
-    <div class="volt-card">
+            script.onload = function () {
+                if (window.initVoltWidget) {
+                    window.initVoltWidget();
+                }
+            };
 
-        <button class="volt-close">
+            document.body.appendChild(script);
 
-            ✕
-
-        </button>
-
-        <div class="volt-header">
-
-            <div class="volt-brand">
-
-                <img
-                    src="https://tacov77-blip.github.io/voltnoord-contact-widget/assets/header-icon.png"
-                    class="brand-icon"
-                    alt="Volt Noord">
-
-                <div class="brand-text">
-
-                    <h3>Volt Noord</h3>
-
-                    <span>Elektrotechniek</span>
-
-                </div>
-
-            </div>
-
-            <h2>Heeft u een storing?</h2>
-
-            <p>
-
-                Wij helpen u direct verder.
-
-                Bel ons of stuur een WhatsApp.
-
-            </p>
-
-            <div class="volt-status">
-
-                <span class="status-dot"></span>
-
-                Bereikbaar 17:00–22:00
-
-            </div>
-
-        </div>
-
-        <div class="volt-actions">
-
-            <a
-                href="tel:0644513156"
-                class="btn btn-primary">
-
-                📞
-
-                <span>Bel direct</span>
-
-            </a>
-
-            <a
-                href="https://wa.me/31644513156"
-                target="_blank"
-                class="btn btn-secondary">
-
-                💬
-
-                <span>WhatsApp</span>
-
-            </a>
-
-        </div>
-
-        <div class="volt-footer">
-
-            Gemiddelde reactietijd ±15 minuten
-
-        </div>
-
-    </div>
-
-</div>
-
-`
-    );
+        });
 
 })();
